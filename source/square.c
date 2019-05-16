@@ -69,7 +69,7 @@ void attackSquare(void) {
                 advanceTurn(false);
 
                 if (gameWon()) {
-                    iprintf("You won the game!\n");
+                    iprintf("\x1b[11;0HYou won the game!\n");
                     game_won = true;
                 }
                 return;
@@ -109,7 +109,7 @@ void explodeSquare(void) {
     drawPlayerSquare();
 
     if (gameWon() && !game_won) {
-        iprintf("You won the game!");
+        iprintf("\x1b[11;0HYou won the game!");
         game_won = true;
     }
 }
@@ -153,7 +153,7 @@ void resetGame(void) {
     iprintf("A: consume an adjacent square.\n");
     iprintf("B: explode! (has cooldown)\n");
     iprintf("X: exit the game.\n");
-    iprintf("Y: reset the game.\n\n");
+    iprintf("Y: reset the game.\n\n                 ");
 }
 
 // Draws the containing box.
@@ -213,5 +213,5 @@ static void advanceTurn(bool exploded) {
 
     iprintf("\x1b[0;0H");
     iprintf("Moves/CD: %d/%d ", moves, cd);
-    iprintf("\x1b[10;0H");
+    iprintf("\x1b[11;0H");
 }
